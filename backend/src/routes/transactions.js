@@ -6,9 +6,9 @@ const { protect } = require('../middleware/auth');
 // GET /api/transactions - Get user's transactions with filters and pagination
 router.get('/', protect, async (req, res) => {
   try {
-    const { 
-      page = 1, 
-      limit = 10, 
+    const {
+      page = 1,
+      limit = 10,
       type, // 'BUY' or 'SELL'
       sortBy = 'createdAt',
       sortOrder = 'desc'
@@ -16,7 +16,7 @@ router.get('/', protect, async (req, res) => {
 
     // Build filter query
     const filter = { user: req.userId };
-    
+
     if (type && ['BUY', 'SELL'].includes(type.toUpperCase())) {
       filter.type = type.toUpperCase();
     }
@@ -114,9 +114,9 @@ router.get('/', protect, async (req, res) => {
 // GET /api/transactions/:id - Get single transaction details
 router.get('/:id', protect, async (req, res) => {
   try {
-    const transaction = await Transaction.findOne({ 
-      _id: req.params.id, 
-      user: req.userId 
+    const transaction = await Transaction.findOne({
+      _id: req.params.id,
+      user: req.userId
     }).populate({
       path: 'bond',
       select: 'name issuer price returnRate riskLevel sector maturityYears'
