@@ -40,6 +40,12 @@ export default function Navbar() {
             >
               Bonds
             </Link>
+            <Link
+              href="/leaderboard"
+              className="text-gray-300 hover:text-white transition-colors"
+            >
+              Leaderboard
+            </Link>
             {isAuthenticated && (
               <>
                 <Link
@@ -150,6 +156,13 @@ export default function Navbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   🏛️ Bonds
+                </Link>
+                <Link
+                  href="/leaderboard"
+                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🏆 Leaderboard
                 </Link>
                 {isAuthenticated && (
                   <>
