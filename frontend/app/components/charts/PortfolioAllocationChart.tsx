@@ -80,8 +80,8 @@ export default function PortfolioAllocationChart({ holdings }: PortfolioAllocati
           ))}
         </Pie>
         <Tooltip content={<CustomTooltip />} />
-        <Legend 
-          verticalAlign="bottom" 
+        <Legend
+          verticalAlign="bottom"
           height={36}
           formatter={(value) => <span className="text-gray-300 text-sm">{value}</span>}
         />
