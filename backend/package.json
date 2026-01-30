@@ -5,13 +5,22 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "seed": "node src/scripts/seed.js"
   },
-  "keywords": ["bonds", "fintech", "tokenization"],
+  "keywords": [
+    "bonds",
+    "fintech",
+    "tokenization"
+  ],
   "author": "Co Devians",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "dotenv": "^17.2.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.5"
   }
 }
