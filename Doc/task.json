@@ -219,48 +219,48 @@
     },
     "iteration_4": {
       "name": "Bond Details Page",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Click bond to see full details",
       "tasks": [
         {
           "id": "T4.1",
           "task": "Create /bonds/[id] page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Dynamic route in Next.js"
         },
         {
           "id": "T4.2",
           "task": "Fetch bond by ID",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Call GET /api/bonds/:id"
         },
         {
           "id": "T4.3",
           "task": "Design bond details layout",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Show all bond information nicely"
         },
         {
           "id": "T4.4",
           "task": "Add back button",
-          "status": "TODO",
+          "status": "DONE",
           "time": "10 min",
           "details": "Navigate back to bonds list"
         },
         {
           "id": "T4.5",
           "task": "Handle 404 not found",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Show error if bond doesn't exist"
         },
         {
           "id": "T4.6",
           "task": "Make BondCard clickable",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Link cards to detail page"
         }
@@ -270,62 +270,62 @@
     },
     "iteration_5": {
       "name": "User Authentication",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Users can register and login",
       "tasks": [
         {
           "id": "T5.1",
           "task": "Create User model",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "email, password, name, wallet fields"
         },
         {
           "id": "T5.2",
           "task": "Install bcryptjs & jsonwebtoken",
-          "status": "TODO",
+          "status": "DONE",
           "time": "10 min",
           "details": "npm install bcryptjs jsonwebtoken"
         },
         {
           "id": "T5.3",
           "task": "Create POST /api/auth/register",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Hash password, create user, return token"
         },
         {
           "id": "T5.4",
           "task": "Create POST /api/auth/login",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Verify password, return JWT token"
         },
         {
           "id": "T5.5",
           "task": "Create Register page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Form with validation"
         },
         {
           "id": "T5.6",
           "task": "Create Login page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Form with validation"
         },
         {
           "id": "T5.7",
           "task": "Store token in localStorage",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Save token on successful login"
         },
         {
           "id": "T5.8",
           "task": "Test auth flow",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Register → Login → Verify token"
         }
@@ -335,48 +335,48 @@
     },
     "iteration_6": {
       "name": "Protected Routes",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Some pages require login",
       "tasks": [
         {
           "id": "T6.1",
           "task": "Create auth middleware",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Verify JWT on protected routes"
         },
         {
           "id": "T6.2",
           "task": "Create AuthContext",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "React context for auth state"
         },
         {
           "id": "T6.3",
           "task": "Update Navbar for auth",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Show user name or login button"
         },
         {
           "id": "T6.4",
           "task": "Add logout functionality",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Clear token and redirect"
         },
         {
           "id": "T6.5",
           "task": "Create protected route wrapper",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Redirect to login if not auth"
         },
         {
           "id": "T6.6",
           "task": "Test protected access",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Verify protection works"
         }
@@ -386,41 +386,41 @@
     },
     "iteration_7": {
       "name": "User Dashboard",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Dashboard for logged-in users",
       "tasks": [
         {
           "id": "T7.1",
           "task": "Create /dashboard page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Protected dashboard route"
         },
         {
           "id": "T7.2",
           "task": "Create GET /api/users/me",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Return current user info"
         },
         {
           "id": "T7.3",
           "task": "Design dashboard layout",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Sidebar + main content area"
         },
         {
           "id": "T7.4",
           "task": "Show user info card",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Name, email, wallet balance"
         },
         {
           "id": "T7.5",
           "task": "Add placeholder sections",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Portfolio, Transactions placeholders"
         }
@@ -430,62 +430,62 @@
     },
     "iteration_8": {
       "name": "Paper Trading - Buy",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Users can buy bonds with virtual money",
       "tasks": [
         {
           "id": "T8.1",
           "task": "Add wallet field to User model",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Default balance: 10,00,000"
         },
         {
           "id": "T8.2",
           "task": "Create Transaction model",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "user, bond, type, quantity, price, date"
         },
         {
           "id": "T8.3",
           "task": "Create Portfolio model",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "user, holdings array"
         },
         {
           "id": "T8.4",
           "task": "Create POST /api/paper-trading/buy",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Validate balance, create transaction, update portfolio"
         },
         {
           "id": "T8.5",
           "task": "Add Buy button to bond details",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Opens quantity modal"
         },
         {
           "id": "T8.6",
           "task": "Create buy modal",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Quantity input, total price, confirm button"
         },
         {
           "id": "T8.7",
           "task": "Show success/error notification",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Toast notification on buy"
         },
         {
           "id": "T8.8",
           "task": "Test buy flow",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Buy bond, verify balance & portfolio updated"
         }
@@ -495,48 +495,48 @@
     },
     "iteration_9": {
       "name": "Portfolio View",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Users see their holdings",
       "tasks": [
         {
           "id": "T9.1",
           "task": "Create GET /api/portfolio",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Return user's holdings with bond details"
         },
         {
           "id": "T9.2",
           "task": "Create /dashboard/portfolio page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Protected portfolio route"
         },
         {
           "id": "T9.3",
           "task": "Create holdings table",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Bond name, quantity, avg price, current value"
         },
         {
           "id": "T9.4",
           "task": "Calculate total values",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Total investment, current value, P&L"
         },
         {
           "id": "T9.5",
           "task": "Add portfolio summary card",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Show totals at top of page"
         },
         {
           "id": "T9.6",
           "task": "Link from dashboard",
-          "status": "TODO",
+          "status": "DONE",
           "time": "10 min",
           "details": "Navigation to portfolio"
         }
@@ -546,48 +546,48 @@
     },
     "iteration_10": {
       "name": "Paper Trading - Sell",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Users can sell their holdings",
       "tasks": [
         {
           "id": "T10.1",
           "task": "Create POST /api/paper-trading/sell",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Validate holdings, create transaction, update portfolio"
         },
         {
           "id": "T10.2",
           "task": "Add Sell button to portfolio",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Button on each holding row"
         },
         {
           "id": "T10.3",
           "task": "Create sell modal",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Quantity input (max = owned), total, confirm"
         },
         {
           "id": "T10.4",
           "task": "Update wallet on sell",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Credit amount to wallet"
         },
         {
           "id": "T10.5",
           "task": "Show success notification",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Toast on successful sell"
         },
         {
           "id": "T10.6",
           "task": "Test full trading cycle",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Buy → Portfolio → Sell → Verify"
         }
@@ -597,48 +597,48 @@
     },
     "iteration_11": {
       "name": "Search & Filter",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Find bonds easily",
       "tasks": [
         {
           "id": "T11.1",
           "task": "Create SearchBar component",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Input with search icon"
         },
         {
           "id": "T11.2",
           "task": "Create FilterPanel component",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Risk filter, return range slider"
         },
         {
           "id": "T11.3",
           "task": "Update API for query params",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "GET /api/bonds?search=&risk=&minReturn="
         },
         {
           "id": "T11.4",
           "task": "Implement frontend filtering",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Update URL params, refetch"
         },
         {
           "id": "T11.5",
           "task": "Add sort dropdown",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Sort by return, risk, name"
         },
         {
           "id": "T11.6",
           "task": "Test search/filter",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Verify all filters work"
         }
@@ -648,41 +648,41 @@
     },
     "iteration_12": {
       "name": "Charts",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Visual data representation",
       "tasks": [
         {
           "id": "T12.1",
           "task": "Install Recharts",
-          "status": "TODO",
+          "status": "DONE",
           "time": "10 min",
           "details": "npm install recharts"
         },
         {
           "id": "T12.2",
           "task": "Create PieChart for allocation",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Portfolio allocation by bond"
         },
         {
           "id": "T12.3",
           "task": "Create LineChart for history",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Portfolio value over time (mock data)"
         },
         {
           "id": "T12.4",
           "task": "Add charts to dashboard",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Place charts in dashboard"
         },
         {
           "id": "T12.5",
           "task": "Make charts responsive",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Work on all screen sizes"
         }
@@ -692,41 +692,41 @@
     },
     "iteration_13": {
       "name": "Risk Score",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Display AI risk assessment",
       "tasks": [
         {
           "id": "T13.1",
           "task": "Add riskScore to Bond model",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Number 0-100"
         },
         {
           "id": "T13.2",
           "task": "Update seed data with scores",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Add scores to sample bonds"
         },
         {
           "id": "T13.3",
           "task": "Create RiskGauge component",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Visual gauge showing score"
         },
         {
           "id": "T13.4",
           "task": "Add gauge to bond details",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Show in bond details page"
         },
         {
           "id": "T13.5",
           "task": "Add risk badge to BondCard",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Color-coded risk indicator"
         }
@@ -736,41 +736,41 @@
     },
     "iteration_14": {
       "name": "Transaction History",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "View all transactions",
       "tasks": [
         {
           "id": "T14.1",
           "task": "Create GET /api/transactions",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Return user's transactions"
         },
         {
           "id": "T14.2",
           "task": "Create transactions page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "/dashboard/transactions"
         },
         {
           "id": "T14.3",
           "task": "Create transactions table",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Date, bond, type, quantity, amount"
         },
         {
           "id": "T14.4",
           "task": "Add type filter",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Filter by buy/sell"
         },
         {
           "id": "T14.5",
           "task": "Add pagination",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "10 per page with navigation"
         }
@@ -780,55 +780,55 @@
     },
     "iteration_15": {
       "name": "Landing Page",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Professional landing page",
       "tasks": [
         {
           "id": "T15.1",
           "task": "Create Hero section",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Headline, subtext, CTA buttons"
         },
         {
           "id": "T15.2",
           "task": "Create Features section",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "4-6 feature cards with icons"
         },
         {
           "id": "T15.3",
           "task": "Create How It Works section",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "3-step process"
         },
         {
           "id": "T15.4",
           "task": "Create Stats section",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Platform statistics"
         },
         {
           "id": "T15.5",
           "task": "Create Footer",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Links, copyright, social"
         },
         {
           "id": "T15.6",
           "task": "Add basic animations",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Fade in on scroll"
         },
         {
           "id": "T15.7",
           "task": "Polish styling",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Colors, spacing, typography"
         }
@@ -838,41 +838,41 @@
     },
     "iteration_16": {
       "name": "Mobile Responsive",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Works on all devices",
       "tasks": [
         {
           "id": "T16.1",
           "task": "Create mobile navigation",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Hamburger menu for mobile"
         },
         {
           "id": "T16.2",
           "task": "Fix bond grid on mobile",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Single column on small screens"
         },
         {
           "id": "T16.3",
           "task": "Make tables scrollable",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Horizontal scroll on mobile"
         },
         {
           "id": "T16.4",
           "task": "Fix dashboard sidebar",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Collapsible on mobile"
         },
         {
           "id": "T16.5",
           "task": "Test all pages on mobile",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Fix any issues found"
         }
@@ -882,41 +882,41 @@
     },
     "iteration_17": {
       "name": "Profile & Settings",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Manage user account",
       "tasks": [
         {
           "id": "T17.1",
           "task": "Create profile page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "/dashboard/profile"
         },
         {
           "id": "T17.2",
           "task": "Create PUT /api/users/me",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Update user info"
         },
         {
           "id": "T17.3",
           "task": "Create edit profile form",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Name, email fields"
         },
         {
           "id": "T17.4",
           "task": "Create change password",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Old password, new password form"
         },
         {
           "id": "T17.5",
           "task": "Add profile picture placeholder",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Avatar display"
         }
@@ -926,41 +926,41 @@
     },
     "iteration_18": {
       "name": "Pricing Page",
-      "status": "TODO",
+      "status": "DONE",
       "goal": "Show subscription plans",
       "tasks": [
         {
           "id": "T18.1",
           "task": "Create /pricing page",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Public pricing page"
         },
         {
           "id": "T18.2",
           "task": "Create PricingCard component",
-          "status": "TODO",
+          "status": "DONE",
           "time": "45 min",
           "details": "Plan name, price, features, CTA"
         },
         {
           "id": "T18.3",
           "task": "Create 3 pricing tiers",
-          "status": "TODO",
+          "status": "DONE",
           "time": "30 min",
           "details": "Free, Basic, Premium"
         },
         {
           "id": "T18.4",
           "task": "Add monthly/yearly toggle",
-          "status": "TODO",
+          "status": "DONE",
           "time": "20 min",
           "details": "Switch prices on toggle"
         },
         {
           "id": "T18.5",
           "task": "Highlight popular plan",
-          "status": "TODO",
+          "status": "DONE",
           "time": "15 min",
           "details": "Visual emphasis on best value"
         }
@@ -1076,9 +1076,9 @@
     }
   },
   "quick_reference": {
-    "current_iteration": 4,
-    "completed_iterations": ["iteration_0", "iteration_1", "iteration_2", "iteration_3"],
+    "current_iteration": 19,
+    "completed_iterations": ["iteration_0", "iteration_1", "iteration_2", "iteration_3", "iteration_4", "iteration_5", "iteration_6", "iteration_7", "iteration_8", "iteration_9", "iteration_10", "iteration_11", "iteration_12", "iteration_13", "iteration_14", "iteration_15", "iteration_16", "iteration_17", "iteration_18"],
     "in_progress": null,
-    "next_up": "Iteration 4: Bond Details Page"
+    "next_up": "Iteration 19: WebSocket Real-time"
   }
 }
