@@ -1,171 +1,149 @@
-# Infrastructure Bond Tokenization Platform (SDG 9.12)
 
-> **Platform for Tokenizing Infrastructure Bonds for Public-Private Funding**
-> *Fintech Startup | CIH 3.0 Hackathon*
+<div align="center">
 
-## Table of Contents
-- [Project Overview](#project-overview)
-- [Key Features](#key-features)
-- [Technology Stack](#technology-stack)
-- [Architecture](#architecture)
-- [Getting Started](#getting-started)
-- [API Documentation](#api-documentation)
-- [Roadmap](#roadmap)
-- [License](#license)
+  # 🚀 Infrastructure Bond Tokenization Platform
+  ### CIH3.0: Central India Hackathon | SDG 9.12
 
-## Project Overview
+  **Transforming Public Infrastructure Funding through Blockchain & AI**
 
-This project is a comprehensive fintech platform designed to democratize investment in infrastructure bonds through blockchain tokenization. By enabling fractional ownership and providing a transparent, secure trading environment, we bridge the gap between public infrastructure projects and private funding.
+  [![Next.js](https://img.shields.io/badge/Next.js-14+-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+  [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+  [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+  [![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+  [![Polygon](https://img.shields.io/badge/Polygon-Matix-8247E5?style=for-the-badge&logo=polygon&logoColor=white)](https://polygon.technology/)
 
-### Core Objectives
-- **Tokenization**: Convert infrastructure bonds into digital tokens for fractional investment.
-- **Transparency**: Utilize blockchain for immutable transaction records.
-- **Accessibility**: Lower barriers to entry for retail investors.
-- **Intelligence**: Provide AI-driven analytics for risk assessment and return prediction.
+  <p align="center">
+    <a href="#key-features">Features</a> •
+    <a href="#getting-started">Getting Started</a> •
+    <a href="#architecture">Architecture</a> •
+    <a href="#api-documentation">API</a>
+  </p>
+</div>
 
-## Key Features
+---
+
+## 🏆 Problem Statement: SDG 9.12
+**"Create a platform for tokenizing infrastructure bonds to enable public-private funding."**
+
+We address the critical gap in infrastructure financing by democratizing access to high-value assets. Our platform allows retail investors to legally own fractional shares of roads, bridges, and energy projects, fostering economic growth and innovation strictly aligned with **UN Sustainable Development Goal 9**.
+
+---
+
+## ✨ Key Features
 
 ### 🚀 For Investors
-- **Bond Marketplace**: Buy, sell, and trade tokenized infrastructure bonds.
-- **AI Analytics**:
-    - **Expected Return Graphs**: LSTM-based predictions.
-    - **Risk Assessment**: AI-calculated risk scores (0-100).
-    - **Sentiment Analysis**: Market sentiment derived from news and social data.
-- **Paper Trading**: Practice trading strategies with virtual currency (up to ₹10L).
-- **Portfolio Management**: Real-time tracking of holdings, PnL, and ROI.
-- **Payment Integration**: Support for e-Rupees (CBDC) and standard gateways.
+- **💎 Fractional Ownership**: Buy & sell tokenized bonds starting from ₹500.
+- **🤖 AI-Powered Insights**:
+  - **Risk Assessment**: Real-time 0-100 risk score.
+  - **Return Prediction**: LSTM-based forecasts for informed decisions.
+- **💸 e-Rupee Integation**: Seamless payments via CBDC (Digital Rupee).
+- **📉 Paper Trading**: Practice with ₹10 Lakh virtual portfolio before investing.
 
 ### 🏢 For Issuers & Platform
-- **Bond Management**: Tools for listing and managing bond lifecycles.
-- **Compliance**: Automated KYC/AML (Aadhaar/DigiLocker) and regulatory reporting (SEBI/RBI).
-- **Admin Dashboard**: Comprehensive analytics and user management.
+- **📜 Smart Contract Settlement**: Instant, trustless settlements on the Polygon network.
+- **🔐 Regulatory Compliance**: Automated KYC (Aadhaar/DigiLocker) & SEBI reporting.
+- **📊 Real-time Transparency**: Immutable ledger records for every transaction.
 
-### 💎 Subscription Tiers
-| Feature | Free | Basic (₹299/mo) | Premium (₹999/mo) | Enterprise (₹4999/mo) |
-| :--- | :---: | :---: | :---: | :---: |
-| Bond Listings | ✅ | ✅ | ✅ | ✅ |
-| Transaction History | Limited | Extended | Full | Full |
-| AI Analytics | ❌ | ✅ | ✅ | ✅ |
-| Paper Trading | ❌ | ❌ | ₹10L Limit | Unlimited |
-| API Access | ❌ | ❌ | ❌ | ✅ |
-| Broker Integration | ❌ | ❌ | ❌ | ✅ |
+---
 
-## Technology Stack
+## 🛠️ Technology Stack
 
-The platform utilizes a modern, scalable tech stack:
+| Domain | Technologies |
+| :--- | :--- |
+| **Frontend** | Next.js 14, Tailwind CSS, Shadcn UI, Framer Motion |
+| **Backend** | Node.js, Express.js, Socket.io (Real-time) |
+| **Database** | MongoDB (Data), Redis (Caching) |
+| **Blockchain** | Solidity, Hardhat, Ethers.js, Polygon Mumbai |
+| **AI / ML** | Python microservices (LSTM, Random Forest) |
+| **DevOps** | Docker, Nginx, GitHub Actions |
 
-### Frontend
-- **Framework**: Next.js 14+ (React)
-- **Language**: TypeScript/JavaScript
-- **Styling**: Tailwind CSS / CSS Modules
-- **UI Components**: shadcn/ui, Radix UI
-- **State Management**: React Context API / Redux Toolkit
-- **Charts/Viz**: Recharts, Chart.js, Framer Motion
+---
 
-### Backend
-- **Runtime**: Node.js 18+
-- **Framework**: Express.js
-- **API**: RESTful API + Socket.io (Real-time)
-- **Authentication**: JWT, Passport.js, OAuth 2.0
-- **Validation**: Joi, Express Validator
+## 🏗️ Architecture
 
-### Database & Storage
-- **Primary DB**: MongoDB 6.0+ (Mongoose ODM)
-- **Caching**: Redis
-- **Containerization**: Docker
+Our solution utilizes an **Event-Driven Microservices Architecture** to ensure detailed scalability and reliability.
 
-### Blockchain (Web3)
-- **Network**: Polygon / Ethereum
-- **Smart Contracts**: Solidity (ERC-20 for Bonds)
-- **Interaction**: ethers.js / web3.js
-- **Wallets**: MetaMask, WalletConnect
+```mermaid
+graph TD
+  User[User / Client] -->|HTTPS| CDN[Cloudflare CDN]
+  CDN -->|Next.js App| FE[Frontend Layer]
 
-## Architecture
+  subgraph "Backend Services"
+    FE -->|API Rest/WS| API[API Gateway]
+    API --> Auth[Auth Service]
+    API --> Bond[Bond Service]
+    API --> Trade[Trading Engine]
+    API --> AI[AI Analytics Service]
+  end
 
-The system follows a Microservices-based architecture with an Event-Driven design:
+  subgraph "Data & Chain"
+    Bond & Trade --> DB[(MongoDB)]
+    Bond & Trade --> Cache[(Redis)]
+    Trade -->|Smart Contract| Chain[Polygon Blockchain]
+  end
+```
 
-1.  **Presentation Layer**: Next.js Client.
-2.  **API Gateway**: Handles routing, auth, and rate limiting.
-3.  **Core Services**:
-    *   Bond Service
-    *   Trading Service
-    *   Analytics Service (AI/ML)
-    *   User/Auth Service
-4.  **Integration Layer**: Connects to external Brokers (Zerodha, AngelOne) and Payment Gateways.
-5.  **Data Layer**: MongoDB (Persistence) & Redis (Hot Data).
-6.  **Blockchain Layer**: Handles token issuance and settlement.
+---
 
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
-- MongoDB (running locally or Atlas URI)
-- Redis
-- Docker (optional but recommended)
+- Node.js v18+
+- Docker & Docker Compose
+- MongoDB (Local or Atlas)
 
 ### Installation
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/Pusparaj99op/CIH3.0-SDG9.12.git
-    cd CIH3.0-SDG9.12
-    ```
+1. **Clone the Repo**
+   ```bash
+   git clone https://github.com/Pusparaj99op/CIH3.0-SDG9.12.git
+   ```
 
-2.  **Install Dependencies**
-    ```bash
-    # Backend
-    cd backend
-    npm install
+2. **Install Dependencies**
+   ```bash
+   cd frontend && npm install
+   cd ../backend && npm install
+   ```
 
-    # Frontend
-    cd ../frontend
-    npm install
-    ```
+3. **Configure Environment**
+   Copy `.env.example` to `.env` and fill in your credentials:
+   ```env
+   MONGODB_URI=mongodb://localhost:27017/bond_platform
+   JWT_SECRET=super_secret_key_cih3
+   BLOCKCHAIN_NETWORK=mumbai
+   ```
 
-3.  **Environment Setup**
-    Create a `.env` file in the root directory (refer to specification for full list):
-    ```env
-    PORT=3210
-    MONGODB_URI=mongodb://localhost:27017/bond_platform
-    JWT_SECRET=your_jwt_secret
-    REDIS_URL=redis://localhost:6379
-    ```
+4. **Launch Application**
+   ```bash
+   # Run with Docker (Recommended)
+   docker-compose up --build
+   ```
+   *Frontend running on: `http://localhost:3000`*
+   *Backend running on: `http://localhost:3210`*
 
-4.  **Run the Application**
+---
 
-    *Development Mode:*
-    ```bash
-    # Start Backend
-    cd backend
-    npm run dev
+## 📡 API Documentation
 
-    # Start Frontend
-    cd frontend
-    npm run dev
-    ```
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/bonds` | List all available infrastructure bonds |
+| `GET` | `/api/v1/bonds/:id/analytics` | Get AI-driven predictions for a bond |
+| `POST` | `/api/v1/trading/buy` | Execute a buy order (Paper/Real) |
+| `GET` | `/api/v1/portfolio` | Fetch user current holdings & PnL |
 
-    *Using Docker:*
-    ```bash
-    docker-compose up --build
-    ```
+> Full Swagger documentation available at `/api-docs`
 
-## API Documentation
+---
 
-The API is served at `http://localhost:3210/api/v1`. Key endpoints include:
+## 🗺️ Roadmap
 
--   **Auth**: `/auth/register`, `/auth/login`
--   **Bonds**: `/bonds` (List), `/bonds/:id` (Details), `/bonds/search` (AI Search)
--   **Trading**: `/trading/buy`, `/trading/sell`, `/trading/order-book`
--   **Portfolio**: `/portfolio`, `/portfolio/holdings`
--   **Analytics**: `/analytics/bond/:id/prediction`, `/analytics/market/trends`
+- [x] **Phase 1**: Core Platform & Tokenization (MVP for CIH3.0)
+- [ ] **Phase 2**: Mobile App (React Native) & Secondary Market
+- [ ] **Phase 3**: Institutional Dashboard & Cross-chain Bridge
 
-> Full Swagger/OpenAPI documentation is available at `/api-docs` when running in development.
+---
 
-## Roadmap
-
--   **Phase 2**: Mobile Apps (React Native), Advanced Trading Algos, Social Trading.
--   **Phase 3**: International Markets, Derivatives, Machine Learning Model Marketplace.
-
-## License
-
-This project is licensed under the terms of the project LICENSE.
+<div align="center">
+  <sub>Built with ❤️ for <b>Central India Hackathon 3.0</b></sub>
+</div>
