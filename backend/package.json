@@ -1,0 +1,17 @@
+{
+  "name": "mudra-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Mudra - Infrastructure Bond Tokenization Platform",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["bonds", "fintech", "tokenization"],
+  "author": "Co Devians",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
