@@ -1,11 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import ProtectedRoute from '../components/ProtectedRoute';
 import dynamic from 'next/dynamic';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Canvas } from '@react-three/fiber';
+import { Float, OrbitControls } from '@react-three/drei';
+import { animateCounter, scrollStagger, prefersReducedMotion, isMobile } from '@/lib/animations';
+import { createDataSphere, createSceneLighting } from '@/lib/3d';
+import * as THREE from 'three';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Dynamically import charts to avoid SSR issues
 const PortfolioAllocationChart = dynamic(
@@ -46,6 +56,8 @@ export default function DashboardPage() {
 
 function DashboardContent() {
   const { user, token, refreshUser } = useAuth();
+  const statsGridRef = useRef<HTMLDivElement>(null);
+  const chartsRef = useRef<HTMLDivElement>(null);
   const [stats, setStats] = useState<DashboardStats>({
     totalInvested: 0,
     totalReturns: 0,
@@ -107,6 +119,38 @@ function DashboardContent() {
     });
   };
 
+  // Animate stats counters
+  useGSAP(() => {
+    if (statsGridRef.current && !loading && !prefersReducedMotion()) {
+      const statNumbers = statsGridRef.current.querySelectorAll('.stat-number');
+      statNumbers.forEach((el) => {
+        const target = parseFloat(el.getAttribute('data-value') || '0');
+        animateCounter(el as HTMLElement, 0, target, 1.5);
+      });
+
+      scrollStagger(statsGridRef.current, '.stat-card', {
+        y: 20,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.5,
+        ease: 'power2.out'
+      });
+    }
+  }, [loading, stats]);
+
+  // Animate charts on scroll
+  useGSAP(() => {
+    if (chartsRef.current && !loading && !prefersReducedMotion()) {
+      scrollStagger(chartsRef.current, '.chart-card', {
+        y: 30,
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: 'power3.out'
+      });
+    }
+  }, [loading]);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navbar />
@@ -121,62 +165,62 @@ function DashboardContent() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div ref={statsGridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {/* Wallet Balance */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="stat-card glass rounded-2xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
                 <span className="text-2xl">💰</span>
               </div>
               <div>
                 <p className="text-gray-400 text-sm">Wallet Balance</p>
-                <p className="text-2xl font-bold text-green-400">
-                  {formatCurrency(user?.wallet?.balance || 0)}
+                <p className="stat-number text-2xl font-bold text-green-400" data-value={user?.wallet?.balance || 0}>
+                  {formatCurrency(0)}
                 </p>
               </div>
             </div>
           </div>
 
           {/* Portfolio Value */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="stat-card glass rounded-2xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
                 <span className="text-2xl">📊</span>
               </div>
               <div>
                 <p className="text-gray-400 text-sm">Portfolio Value</p>
-                <p className="text-2xl font-bold text-blue-400">
-                  {formatCurrency(stats.portfolioValue)}
+                <p className="stat-number text-2xl font-bold text-blue-400" data-value={stats.portfolioValue}>
+                  {formatCurrency(0)}
                 </p>
               </div>
             </div>
           </div>
 
           {/* Total Invested */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="stat-card glass rounded-2xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
                 <span className="text-2xl">🏦</span>
               </div>
               <div>
                 <p className="text-gray-400 text-sm">Total Invested</p>
-                <p className="text-2xl font-bold text-purple-400">
-                  {formatCurrency(stats.totalInvested)}
+                <p className="stat-number text-2xl font-bold text-purple-400" data-value={stats.totalInvested}>
+                  {formatCurrency(0)}
                 </p>
               </div>
             </div>
           </div>
 
           {/* Bonds Owned */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="stat-card glass rounded-2xl p-6 border border-white/20">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
                 <span className="text-2xl">📜</span>
               </div>
               <div>
                 <p className="text-gray-400 text-sm">Bonds Owned</p>
-                <p className="text-2xl font-bold text-yellow-400">
-                  {stats.bondsOwned}
+                <p className="stat-number text-2xl font-bold text-yellow-400" data-value={stats.bondsOwned}>
+                  0
                 </p>
               </div>
             </div>
@@ -224,9 +268,9 @@ function DashboardContent() {
           {/* Right Column - Charts & Quick Actions */}
           <div className="lg:col-span-2 space-y-8">
             {/* Charts Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div ref={chartsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Portfolio Value History */}
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+              <div className="chart-card glass rounded-2xl p-6 border border-white/20">
                 <h2 className="text-lg font-bold text-white mb-4">Portfolio Value (30 Days)</h2>
                 <PortfolioHistoryChart
                   currentValue={stats.portfolioValue}
@@ -235,7 +279,7 @@ function DashboardContent() {
               </div>
 
               {/* Portfolio Allocation */}
-              <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+              <div className="chart-card glass rounded-2xl p-6 border border-white/20">
                 <h2 className="text-lg font-bold text-white mb-4">Sector Allocation</h2>
                 <PortfolioAllocationChart holdings={stats.holdings} />
               </div>
