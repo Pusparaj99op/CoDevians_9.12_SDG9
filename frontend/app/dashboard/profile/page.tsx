@@ -45,7 +45,7 @@ function ProfileContent() {
 
   const handleProfileUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!profileData.name.trim()) {
       showToast('Name cannot be empty', 'error');
       return;
@@ -177,7 +177,7 @@ function ProfileContent() {
             <div className="flex-1 text-center md:text-left">
               <h2 className="text-3xl font-bold text-white mb-2">{user?.name}</h2>
               <p className="text-white/70 text-lg mb-4">{user?.email}</p>
-              
+
               <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                 <div className="px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-lg">
                   <div className="text-green-400 text-xs mb-1">Wallet Balance</div>
