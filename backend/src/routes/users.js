@@ -7,7 +7,7 @@ const { protect } = require('../middleware/auth');
 router.get('/me', protect, async (req, res) => {
   try {
     const user = await User.findById(req.userId);
-    
+
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -44,9 +44,9 @@ router.get('/me', protect, async (req, res) => {
 router.put('/me', protect, async (req, res) => {
   try {
     const { name, avatar } = req.body;
-    
+
     const user = await User.findById(req.userId);
-    
+
     if (!user) {
       return res.status(404).json({
         success: false,
@@ -57,7 +57,7 @@ router.put('/me', protect, async (req, res) => {
     // Update allowed fields
     if (name) user.name = name;
     if (avatar !== undefined) user.avatar = avatar;
-    
+
     await user.save();
 
     res.json({
@@ -90,7 +90,7 @@ router.put('/me', protect, async (req, res) => {
 router.get('/wallet', protect, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select('wallet');
-    
+
     if (!user) {
       return res.status(404).json({
         success: false,
