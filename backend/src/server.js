@@ -9,6 +9,7 @@ const usersRoutes = require('./routes/users');
 const paperTradingRoutes = require('./routes/paperTrading');
 const portfolioRoutes = require('./routes/portfolio');
 const transactionsRoutes = require('./routes/transactions');
+const leaderboardRoutes = require('./routes/leaderboard');
 
 const app = express();
 const PORT = process.env.PORT || 3210;
@@ -28,13 +29,14 @@ app.use('/api/users', usersRoutes);
 app.use('/api/paper-trading', paperTradingRoutes);
 app.use('/api/portfolio', portfolioRoutes);
 app.use('/api/transactions', transactionsRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
 
 // Root route
 app.get('/', (req, res) => {
   res.json({
     message: 'Mudra Backend API',
     version: '1.0.0',
-    endpoints: ['/api/health', '/api/bonds', '/api/auth', '/api/users', '/api/paper-trading', '/api/portfolio', '/api/transactions']
+    endpoints: ['/api/health', '/api/bonds', '/api/auth', '/api/users', '/api/paper-trading', '/api/portfolio', '/api/transactions', '/api/leaderboard']
   });
 });
 
