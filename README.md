@@ -256,8 +256,9 @@ The platform is **fully functional** with the following verified features:
 | :--- | :--- | :--- |
 | ![Team Leader](https://img.shields.io/badge/Team_Leader-FFD700?style=for-the-badge&logo=probot&logoColor=black) | **Pranay Gajbhiye** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pranaygajbhiye/) |
 | ![Backend](https://img.shields.io/badge/Backend-000000?style=for-the-badge&logo=nodedotjs&logoColor=white) | **Abhijit Dohe** | |
-| ![Management](https://img.shields.io/badge/Management-4caf50?style=for-the-badge&logo=google-sheets&logoColor=white) | **Vineet Mandalkar** | |
-| ![Frontend](https://img.shields.io/badge/Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black) | **Samiksh Gupta** | |
+| ![Management](https://img.shields.io/badge/Management-4caf50?style=for-the-badge&logo=google-sheets&logoColor=white) | **Vineet Mandhalkar** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/vineet-ravi-mandhalkar-5a96a5334/) |
+| ![Frontend](https://img.shields.io/badge/Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black) | **Samiksha Gupta** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/samiksha-gupta-042059335/) |
+
 
 ---
 
