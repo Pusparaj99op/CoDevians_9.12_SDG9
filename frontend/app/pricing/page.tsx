@@ -116,7 +116,7 @@ export default function PricingPage() {
               Simple, Transparent Pricing
             </h1>
             <p className="text-xl text-white/70 max-w-3xl mx-auto mb-8">
-              Choose the plan that fits your investment journey. Start free with paper trading, 
+              Choose the plan that fits your investment journey. Start free with paper trading,
               upgrade anytime to access real money investing.
             </p>
 
@@ -256,7 +256,7 @@ export default function PricingPage() {
                   Can I switch plans later?
                 </h3>
                 <p className="text-white/70">
-                  Yes! You can upgrade or downgrade your plan anytime. Changes take effect immediately, 
+                  Yes! You can upgrade or downgrade your plan anytime. Changes take effect immediately,
                   and we&apos;ll prorate the difference.
                 </p>
               </div>
@@ -266,7 +266,7 @@ export default function PricingPage() {
                   What payment methods do you accept?
                 </h3>
                 <p className="text-white/70">
-                  We accept all major credit cards, debit cards, UPI, and net banking. 
+                  We accept all major credit cards, debit cards, UPI, and net banking.
                   All payments are processed securely through our payment partners.
                 </p>
               </div>
@@ -276,7 +276,7 @@ export default function PricingPage() {
                   Is there a long-term commitment?
                 </h3>
                 <p className="text-white/70">
-                  No! All plans are month-to-month or year-to-year with no long-term contracts. 
+                  No! All plans are month-to-month or year-to-year with no long-term contracts.
                   Cancel anytime with no penalties.
                 </p>
               </div>
@@ -286,7 +286,7 @@ export default function PricingPage() {
                   What happens to my portfolio if I downgrade?
                 </h3>
                 <p className="text-white/70">
-                  Your portfolio and transaction history remain intact. You&apos;ll simply lose access 
+                  Your portfolio and transaction history remain intact. You&apos;ll simply lose access
                   to premium features until you upgrade again.
                 </p>
               </div>
@@ -299,7 +299,7 @@ export default function PricingPage() {
               Ready to Start Investing?
             </h2>
             <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-              Join hundreds of investors building their infrastructure portfolio. 
+              Join hundreds of investors building their infrastructure portfolio.
               Start with paper trading, upgrade when you&apos;re ready.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
