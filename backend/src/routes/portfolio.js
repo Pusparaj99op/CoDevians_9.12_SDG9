@@ -34,7 +34,7 @@ router.get('/', protect, async (req, res) => {
       const bond = holding.bond;
       const currentValue = bond ? bond.price * holding.quantity : 0;
       const profitLoss = currentValue - holding.totalInvested;
-      const percentageReturn = holding.totalInvested > 0 
+      const percentageReturn = holding.totalInvested > 0
         ? ((profitLoss / holding.totalInvested) * 100).toFixed(2)
         : 0;
 
@@ -66,7 +66,7 @@ router.get('/', protect, async (req, res) => {
     const totalInvested = holdingsWithValues.reduce((sum, h) => sum + h.totalInvested, 0);
     const currentValue = holdingsWithValues.reduce((sum, h) => sum + h.currentValue, 0);
     const totalReturns = currentValue - totalInvested;
-    const percentageReturn = totalInvested > 0 
+    const percentageReturn = totalInvested > 0
       ? ((totalReturns / totalInvested) * 100).toFixed(2)
       : 0;
 
@@ -139,7 +139,7 @@ router.get('/summary', protect, async (req, res) => {
         totalBondsOwned: activeHoldings.length,
         expectedAnnualReturns,
         totalReturns: currentValue - totalInvested,
-        percentageReturn: totalInvested > 0 
+        percentageReturn: totalInvested > 0
           ? parseFloat(((currentValue - totalInvested) / totalInvested * 100).toFixed(2))
           : 0
       }
@@ -157,7 +157,7 @@ router.get('/summary', protect, async (req, res) => {
 router.get('/transactions', protect, async (req, res) => {
   try {
     const { limit = 10 } = req.query;
-    
+
     const transactions = await Transaction.find({ user: req.userId })
       .sort({ createdAt: -1 })
       .limit(parseInt(limit))
