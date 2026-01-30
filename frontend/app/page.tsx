@@ -351,6 +351,7 @@ export default function Home() {
               <h3 className="text-white font-semibold mb-4">Platform</h3>
               <ul className="space-y-2">
                 <li><Link href="/bonds" className="text-white/60 hover:text-white transition-colors text-sm">Browse Bonds</Link></li>
+                <li><Link href="/leaderboard" className="text-white/60 hover:text-white transition-colors text-sm">Leaderboard</Link></li>
                 <li><Link href="/dashboard" className="text-white/60 hover:text-white transition-colors text-sm">Dashboard</Link></li>
                 <li><Link href="/portfolio" className="text-white/60 hover:text-white transition-colors text-sm">Portfolio</Link></li>
                 <li><Link href="/dashboard/transactions" className="text-white/60 hover:text-white transition-colors text-sm">Transactions</Link></li>
