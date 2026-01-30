@@ -4,6 +4,7 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 const healthRoutes = require('./routes/health');
 const bondsRoutes = require('./routes/bonds');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3210;
@@ -18,13 +19,14 @@ connectDB();
 // Routes
 app.use('/api/health', healthRoutes);
 app.use('/api/bonds', bondsRoutes);
+app.use('/api/auth', authRoutes);
 
 // Root route
 app.get('/', (req, res) => {
   res.json({ 
     message: 'Mudra Backend API',
     version: '1.0.0',
-    endpoints: ['/api/health', '/api/bonds']
+    endpoints: ['/api/health', '/api/bonds', '/api/auth']
   });
 });
 
