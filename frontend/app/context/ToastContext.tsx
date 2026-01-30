@@ -67,9 +67,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={toast.id}
             className={`flex items-center gap-3 px-4 py-3 rounded-xl border backdrop-blur-lg shadow-lg text-white animate-slide-up ${getToastStyles(toast.type)}`}
-            style={{
-              animation: 'slideUp 0.3s ease-out'
-            }}
           >
             <span className="text-lg font-bold">{getToastIcon(toast.type)}</span>
             <p className="font-medium">{toast.message}</p>
