@@ -65,7 +65,7 @@ function DashboardContent() {
       setLoading(false);
       return;
     }
-    
+
     try {
       const response = await fetch(`${API_URL}/portfolio`, {
         headers: {
@@ -73,7 +73,7 @@ function DashboardContent() {
         }
       });
       const data = await response.json();
-      
+
       if (data.success && data.data.portfolio) {
         const portfolio = data.data.portfolio;
         setStats({
@@ -110,7 +110,7 @@ function DashboardContent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navbar />
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
         {/* Welcome Header */}
         <div className="mb-8">
@@ -189,7 +189,7 @@ function DashboardContent() {
           <div className="lg:col-span-1">
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
               <h2 className="text-xl font-bold text-white mb-6">Profile</h2>
-              
+
               {/* Avatar */}
               <div className="flex flex-col items-center mb-6">
                 <div className="w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mb-4">
@@ -228,8 +228,8 @@ function DashboardContent() {
               {/* Portfolio Value History */}
               <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
                 <h2 className="text-lg font-bold text-white mb-4">Portfolio Value (30 Days)</h2>
-                <PortfolioHistoryChart 
-                  currentValue={stats.portfolioValue} 
+                <PortfolioHistoryChart
+                  currentValue={stats.portfolioValue}
                   totalInvested={stats.totalInvested}
                 />
               </div>
@@ -244,7 +244,7 @@ function DashboardContent() {
             {/* Quick Actions */}
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
               <h2 className="text-xl font-bold text-white mb-6">Quick Actions</h2>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <Link
                   href="/bonds"
@@ -266,13 +266,15 @@ function DashboardContent() {
                   <span className="text-white font-medium">My Portfolio</span>
                 </Link>
 
-                <div className="flex flex-col items-center gap-3 p-6 bg-white/5 rounded-xl border border-white/10 opacity-50 cursor-not-allowed">
-                  <div className="w-14 h-14 bg-gray-500/30 rounded-xl flex items-center justify-center">
+                <Link
+                  href="/dashboard/transactions"
+                  className="flex flex-col items-center gap-3 p-6 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all group"
+                >
+                  <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <span className="text-2xl">📋</span>
                   </div>
-                  <span className="text-gray-400 font-medium">Transactions</span>
-                  <span className="text-xs text-gray-500">Coming Soon</span>
-                </div>
+                  <span className="text-white font-medium">Transactions</span>
+                </Link>
               </div>
             </div>
 
@@ -285,7 +287,7 @@ function DashboardContent() {
                 <div>
                   <h3 className="text-white font-semibold mb-1">Paper Trading Mode Active</h3>
                   <p className="text-blue-200/70 text-sm">
-                    You&apos;re trading with virtual money. Learn the markets risk-free! 
+                    You&apos;re trading with virtual money. Learn the markets risk-free!
                     Your starting balance is ₹10,00,000.
                   </p>
                 </div>
