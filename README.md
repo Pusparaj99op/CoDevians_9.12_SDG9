@@ -144,6 +144,17 @@ graph TD
 
 ---
 
+## 👥 Team: Co Devians
+
+| Role | Name | Link |
+| :--- | :--- | :--- |
+| **👑 Team Leader** | **Pranay Gajbhiye** | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/pranaygajbhiye/) |
+| **⚙️ Backend** | **Abhijit Dohe** | 👨‍💻 |
+| **📈 Management** | **Vineet Mandalkar** | 👔 |
+| **🎨 Frontend** | **Samiksh Gupta** | 🖌️ |
+
+---
+
 <div align="center">
   <sub>Built with ❤️ for <b>Central India Hackathon 3.0</b></sub>
 </div>
