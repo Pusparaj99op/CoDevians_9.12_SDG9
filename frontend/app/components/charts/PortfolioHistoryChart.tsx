@@ -12,29 +12,29 @@ function generateHistoricalData(currentValue: number, totalInvested: number) {
   const data = [];
   const days = 30;
   const today = new Date();
-  
+
   // Calculate a growth factor
   const growthRate = currentValue > 0 ? (currentValue / Math.max(totalInvested, 1)) : 1;
-  
+
   for (let i = days; i >= 0; i--) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
-    
+
     // Create a smooth progression with some variation
     const progress = (days - i) / days;
     const baseValue = totalInvested * (1 + (growthRate - 1) * progress);
-    
+
     // Add some realistic variation (-2% to +2%)
     const variation = 1 + (Math.sin(i * 0.5) * 0.02) + (Math.random() - 0.5) * 0.01;
     const value = Math.round(baseValue * variation);
-    
+
     data.push({
       date: date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }),
       value: Math.max(value, 0),
       fullDate: date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
     });
   }
-  
+
   return data;
 }
 
@@ -89,15 +89,15 @@ export default function PortfolioHistoryChart({ currentValue, totalInvested }: P
           </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
-        <XAxis 
-          dataKey="date" 
-          stroke="#6b7280" 
+        <XAxis
+          dataKey="date"
+          stroke="#6b7280"
           tick={{ fill: '#9ca3af', fontSize: 12 }}
           tickLine={false}
           interval="preserveStartEnd"
         />
-        <YAxis 
-          stroke="#6b7280" 
+        <YAxis
+          stroke="#6b7280"
           tick={{ fill: '#9ca3af', fontSize: 12 }}
           tickFormatter={formatCurrency}
           tickLine={false}
