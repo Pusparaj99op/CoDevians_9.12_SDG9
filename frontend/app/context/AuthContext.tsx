@@ -41,7 +41,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const storedToken = localStorage.getItem('mudra_token');
     const storedUser = localStorage.getItem('mudra_user');
-    
+
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(JSON.parse(storedUser));
@@ -52,14 +52,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Refresh user data from server
   const refreshUser = async () => {
     if (!token) return;
-    
+
     try {
       const response = await fetch(`${API_URL}/auth/me`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
       });
-      
+
       if (response.ok) {
         const data = await response.json();
         if (data.success) {
@@ -85,9 +85,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
         body: JSON.stringify({ email, password })
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setUser(data.data.user);
         setToken(data.data.token);
@@ -113,9 +113,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         },
         body: JSON.stringify({ name, email, password })
       });
-      
+
       const data = await response.json();
-      
+
       if (data.success) {
         setUser(data.data.user);
         setToken(data.data.token);
