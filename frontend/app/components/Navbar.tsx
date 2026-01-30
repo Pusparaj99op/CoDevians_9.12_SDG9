@@ -28,35 +28,35 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="text-gray-300 hover:text-white transition-colors"
             >
               Home
             </Link>
-            <Link 
-              href="/bonds" 
+            <Link
+              href="/bonds"
               className="text-gray-300 hover:text-white transition-colors"
             >
               Bonds
             </Link>
             {isAuthenticated && (
               <>
-                <Link 
-                  href="/dashboard" 
+                <Link
+                  href="/dashboard"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Dashboard
                 </Link>
-                <Link 
-                  href="/portfolio" 
+                <Link
+                  href="/portfolio"
                   className="text-gray-300 hover:text-white transition-colors"
                 >
                   Portfolio
                 </Link>
               </>
             )}
-            
+
             {/* Auth Section */}
             {isLoading ? (
               <div className="w-20 h-9 bg-white/10 rounded-lg animate-pulse"></div>
@@ -82,14 +82,14 @@ export default function Navbar() {
               </div>
             ) : (
               <div className="flex items-center gap-3">
-                <Link 
-                  href="/login" 
+                <Link
+                  href="/login"
                   className="px-4 py-2 text-gray-300 hover:text-white transition-colors font-medium"
                 >
                   Login
                 </Link>
-                <Link 
-                  href="/register" 
+                <Link
+                  href="/register"
                   className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white rounded-lg font-medium transition-all"
                 >
                   Sign Up
@@ -99,7 +99,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-white p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
@@ -114,77 +114,118 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/10">
-            <div className="flex flex-col gap-4">
-              <Link 
-                href="/" 
-                className="text-gray-300 hover:text-white transition-colors"
+        {/* Mobile Navigation - Slide out from right */}
+        <div className={`md:hidden fixed inset-y-0 right-0 w-64 bg-slate-900/95 backdrop-blur-lg border-l border-white/10 transform transition-transform duration-300 ease-in-out z-50 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="flex flex-col h-full">
+            {/* Mobile Header */}
+            <div className="flex items-center justify-between p-4 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🏦</span>
+                <span className="text-xl font-bold text-white">Mudra</span>
+              </div>
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white p-2"
+                aria-label="Close menu"
               >
-                Home
-              </Link>
-              <Link 
-                href="/bonds" 
-                className="text-gray-300 hover:text-white transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Bonds
-              </Link>
-              {isAuthenticated && (
-                <>
-                  <Link 
-                    href="/dashboard" 
-                    className="text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Dashboard
-                  </Link>
-                  <Link 
-                    href="/portfolio" 
-                    className="text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Portfolio
-                  </Link>
-                </>
-              )}
-              
-              {/* Mobile Auth */}
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Mobile Menu Items */}
+            <div className="flex-1 overflow-y-auto p-4">
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/"
+                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🏠 Home
+                </Link>
+                <Link
+                  href="/bonds"
+                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🏛️ Bonds
+                </Link>
+                {isAuthenticated && (
+                  <>
+                    <Link
+                      href="/dashboard"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      📊 Dashboard
+                    </Link>
+                    <Link
+                      href="/portfolio"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      📈 Portfolio
+                    </Link>
+                    <Link
+                      href="/dashboard/transactions"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      📋 Transactions
+                    </Link>
+                    <Link
+                      href="/dashboard/profile"
+                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      ⚙️ Profile & Settings
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
+
+            {/* Mobile Auth Section */}
+            <div className="p-4 border-t border-white/10">
               {isAuthenticated ? (
                 <>
-                  <div className="flex items-center gap-2 px-3 py-2 bg-green-500/20 border border-green-500/30 rounded-lg w-fit">
-                    <span className="text-green-400 text-sm">💰</span>
-                    <span className="text-green-300 text-sm font-medium">
+                  <div className="mb-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-green-400 text-sm">💰</span>
+                      <span className="text-green-300 text-xs">Wallet Balance</span>
+                    </div>
+                    <span className="text-green-300 text-lg font-bold">
                       {formatBalance(user?.wallet?.balance || 0)}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gray-300">{user?.name}</span>
-                    <button
-                      onClick={() => {
-                        logout();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg text-sm font-medium transition-colors border border-red-500/30"
-                    >
-                      Logout
-                    </button>
+                  <div className="mb-3 p-3 bg-white/5 rounded-lg">
+                    <div className="text-gray-400 text-xs mb-1">Logged in as</div>
+                    <div className="text-white font-medium">{user?.name}</div>
+                    <div className="text-gray-400 text-sm">{user?.email}</div>
                   </div>
+                  <button
+                    onClick={() => {
+                      logout();
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="w-full px-4 py-3 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg font-medium transition-colors border border-red-500/30"
+                  >
+                    Logout
+                  </button>
                 </>
               ) : (
                 <div className="flex flex-col gap-2">
-                  <Link 
-                    href="/login" 
-                    className="px-4 py-2 text-gray-300 hover:text-white transition-colors font-medium text-center border border-white/20 rounded-lg"
+                  <Link
+                    href="/login"
+                    className="px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 transition-all font-medium text-center border border-white/20 rounded-lg"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Login
                   </Link>
-                  <Link 
-                    href="/register" 
-                    className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-lg font-medium text-center"
+                  <Link
+                    href="/register"
+                    className="px-4 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-white rounded-lg font-medium text-center transition-all"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign Up
@@ -193,6 +234,14 @@ export default function Navbar() {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Overlay */}
+        {isMobileMenuOpen && (
+          <div
+            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+          />
         )}
       </div>
     </nav>
