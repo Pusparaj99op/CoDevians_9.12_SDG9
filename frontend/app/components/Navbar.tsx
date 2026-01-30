@@ -1,76 +1,140 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../context/AuthContext';
+import gsap from 'gsap';
+import { prefersReducedMotion, isMobile } from '@/lib/animations';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { user, isAuthenticated, logout, isLoading } = useAuth();
+  const navRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
 
   const formatBalance = (balance: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'INR',
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     }).format(balance);
   };
 
+  // Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Logo bounce animation on mount
+  useEffect(() => {
+    if (logoRef.current && !prefersReducedMotion()) {
+      gsap.from(logoRef.current, {
+        scale: 0,
+        rotation: -180,
+        duration: 0.6,
+        ease: 'back.out(1.7)',
+        delay: 0.2,
+      });
+    }
+  }, []);
+
+  // Mobile menu animation
+  useEffect(() => {
+    if (!prefersReducedMotion()) {
+      const menuItems = document.querySelectorAll('.mobile-menu-item');
+      if (isMobileMenuOpen && menuItems.length > 0) {
+        gsap.from(menuItems, {
+          x: 50,
+          opacity: 0,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: 'power2.out',
+        });
+      }
+    }
+  }, [isMobileMenuOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+    <nav
+      ref={navRef}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-black/40 backdrop-blur-xl border-b border-white/20 shadow-lg'
+          : 'bg-black/20 backdrop-blur-lg border-b border-white/10'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-2xl">🏦</span>
-            <span className="text-xl font-bold text-white">Mudra</span>
+          <Link href="/" className="flex items-center gap-2 group">
+            <span
+              ref={logoRef}
+              className="text-2xl group-hover:scale-110 transition-transform inline-block"
+            >
+              🏦
+            </span>
+            <span className="text-xl font-bold text-gradient-blue">Mudra</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             <Link
               href="/"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-all relative group"
             >
               Home
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               href="/bonds"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-all relative group"
             >
               Bonds
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 group-hover:w-full transition-all duration-300" />
             </Link>
             <Link
               href="/leaderboard"
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-all relative group"
             >
               Leaderboard
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 group-hover:w-full transition-all duration-300" />
             </Link>
             {isAuthenticated && (
               <>
                 <Link
                   href="/dashboard"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-300 hover:text-white transition-all relative group"
                 >
                   Dashboard
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 group-hover:w-full transition-all duration-300" />
                 </Link>
                 <Link
                   href="/portfolio"
-                  className="text-gray-300 hover:text-white transition-colors"
+                  className="text-gray-300 hover:text-white transition-all relative group"
                 >
                   Portfolio
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-400 to-orange-500 group-hover:w-full transition-all duration-300" />
                 </Link>
               </>
             )}
 
             {/* Auth Section */}
             {isLoading ? (
-              <div className="w-20 h-9 bg-white/10 rounded-lg animate-pulse"></div>
+              <div className="w-20 h-9 glass rounded-lg shimmer" />
             ) : isAuthenticated ? (
               <div className="flex items-center gap-4">
-                {/* Wallet Balance */}
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-green-500/20 border border-green-500/30 rounded-lg">
-                  <span className="text-green-400 text-sm">💰</span>
+                {/* Wallet Balance - Animated counter */}
+                <div className="flex items-center gap-2 px-3 py-1.5 glass-strong border border-green-500/30 rounded-lg hover:border-green-500/50 transition-all group">
+                  <span className="text-green-400 text-sm group-hover:scale-125 transition-transform inline-block">
+                    💰
+                  </span>
                   <span className="text-green-300 text-sm font-medium">
                     {formatBalance(user?.wallet?.balance || 0)}
                   </span>
@@ -80,7 +144,7 @@ export default function Navbar() {
                   <span className="text-gray-300 text-sm">{user?.name}</span>
                   <button
                     onClick={logout}
-                    className="px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg text-sm font-medium transition-colors border border-red-500/30"
+                    className="px-4 py-2 glass-strong hover:bg-red-500/30 text-red-300 rounded-lg text-sm font-medium transition-all border border-red-500/30 hover:border-red-500/50 hover:scale-105"
                   >
                     Logout
                   </button>
@@ -96,7 +160,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register"
-                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white rounded-lg font-medium transition-all"
+                  className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white rounded-lg font-medium transition-all hover:scale-105 hover:shadow-lg hover:shadow-orange-500/50"
                 >
                   Sign Up
                 </Link>
@@ -104,38 +168,63 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button with hamburger animation */}
           <button
-            className="md:hidden text-white p-2"
+            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg
+              className="w-6 h-6 transition-transform duration-300"
+              style={{ transform: isMobileMenuOpen ? 'rotate(90deg)' : 'rotate(0)' }}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
         </div>
 
         {/* Mobile Navigation - Slide out from right */}
-        <div className={`md:hidden fixed inset-y-0 right-0 w-64 bg-slate-900/95 backdrop-blur-lg border-l border-white/10 transform transition-transform duration-300 ease-in-out z-50 ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div
+          className={`md:hidden fixed inset-y-0 right-0 w-64 glass-strong border-l border-white/20 transform transition-transform duration-300 ease-in-out z-50 ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
           <div className="flex flex-col h-full">
             {/* Mobile Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🏦</span>
-                <span className="text-xl font-bold text-white">Mudra</span>
+                <span className="text-xl font-bold text-gradient-blue">Mudra</span>
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white p-2"
+                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
                 aria-label="Close menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
@@ -145,21 +234,21 @@ export default function Navbar() {
               <div className="flex flex-col gap-2">
                 <Link
                   href="/"
-                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   🏠 Home
                 </Link>
                 <Link
                   href="/bonds"
-                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   🏛️ Bonds
                 </Link>
                 <Link
                   href="/leaderboard"
-                  className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                  className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   🏆 Leaderboard
@@ -168,28 +257,28 @@ export default function Navbar() {
                   <>
                     <Link
                       href="/dashboard"
-                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       📊 Dashboard
                     </Link>
                     <Link
                       href="/portfolio"
-                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       📈 Portfolio
                     </Link>
                     <Link
                       href="/dashboard/transactions"
-                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       📋 Transactions
                     </Link>
                     <Link
                       href="/dashboard/profile"
-                      className="text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
+                      className="mobile-menu-item text-gray-300 hover:text-white hover:bg-white/10 transition-all px-4 py-3 rounded-lg"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       ⚙️ Profile & Settings
@@ -203,7 +292,7 @@ export default function Navbar() {
             <div className="p-4 border-t border-white/10">
               {isAuthenticated ? (
                 <>
-                  <div className="mb-4 p-3 bg-green-500/20 border border-green-500/30 rounded-lg">
+                  <div className="mb-4 p-3 glass-strong border border-green-500/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-green-400 text-sm">💰</span>
                       <span className="text-green-300 text-xs">Wallet Balance</span>
@@ -212,7 +301,7 @@ export default function Navbar() {
                       {formatBalance(user?.wallet?.balance || 0)}
                     </span>
                   </div>
-                  <div className="mb-3 p-3 bg-white/5 rounded-lg">
+                  <div className="mb-3 p-3 glass rounded-lg">
                     <div className="text-gray-400 text-xs mb-1">Logged in as</div>
                     <div className="text-white font-medium">{user?.name}</div>
                     <div className="text-gray-400 text-sm">{user?.email}</div>
@@ -222,7 +311,7 @@ export default function Navbar() {
                       logout();
                       setIsMobileMenuOpen(false);
                     }}
-                    className="w-full px-4 py-3 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg font-medium transition-colors border border-red-500/30"
+                    className="w-full px-4 py-3 glass-strong hover:bg-red-500/30 text-red-300 rounded-lg font-medium transition-all border border-red-500/30"
                   >
                     Logout
                   </button>
@@ -238,7 +327,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/register"
-                    className="px-4 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-white rounded-lg font-medium text-center transition-all"
+                    className="px-4 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 text-white rounded-lg font-medium text-center transition-all hover:shadow-lg hover:shadow-orange-500/50"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     Sign Up
@@ -252,7 +341,7 @@ export default function Navbar() {
         {/* Overlay */}
         {isMobileMenuOpen && (
           <div
-            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
             onClick={() => setIsMobileMenuOpen(false)}
           />
         )}
