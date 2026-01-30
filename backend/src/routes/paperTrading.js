@@ -111,7 +111,7 @@ router.post('/buy', protect, async (req, res) => {
 
     // Update or create portfolio
     let portfolio = await Portfolio.findOne({ user: user._id }).session(session);
-    
+
     if (!portfolio) {
       portfolio = new Portfolio({
         user: user._id,
@@ -129,7 +129,7 @@ router.post('/buy', protect, async (req, res) => {
       const holding = portfolio.holdings[existingHoldingIndex];
       const newTotalInvested = holding.totalInvested + totalCost;
       const newQuantity = holding.quantity + qty;
-      
+
       holding.quantity = newQuantity;
       holding.totalInvested = newTotalInvested;
       holding.averageBuyPrice = newTotalInvested / newQuantity;
@@ -337,7 +337,7 @@ router.post('/sell', protect, async (req, res) => {
 router.get('/transactions', protect, async (req, res) => {
   try {
     const { page = 1, limit = 10, type } = req.query;
-    
+
     const query = { user: req.userId };
     if (type && ['BUY', 'SELL'].includes(type.toUpperCase())) {
       query.type = type.toUpperCase();
