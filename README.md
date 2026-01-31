@@ -141,7 +141,7 @@ graph TD
    cd frontend
    npm run dev
    ```
-   ✅ Frontend runs on: **`http://localhost:3001`** (or 3000 if available)
+   ✅ Frontend runs on: **`http://localhost:5001`**
 
 ### Quick Test
 
@@ -155,7 +155,7 @@ curl http://localhost:3210/api/health
 curl http://localhost:3210/api/bonds
 ```
 
-Then visit [http://localhost:3001](http://localhost:3001) in your browser!
+Then visit [http://localhost:5001](http://localhost:5001) in your browser!
 
 ---
 
