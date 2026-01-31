@@ -53,7 +53,12 @@
       "settlement": "Real-time settlement engine"
     },
     "external_integrations": {
-      "market_data": ["Binance API", "Dhan API", "AngelOne API", "MPIndia API"],
+      "market_data": [
+        "Binance API",
+        "Dhan API",
+        "AngelOne API",
+        "MPIndia API"
+      ],
       "broker_apis": "Multi-broker integration framework",
       "kyc": "Aadhaar eKYC, DigiLocker",
       "notification": "Firebase Cloud Messaging, Twilio"
@@ -71,32 +76,57 @@
     "layers": [
       {
         "name": "Presentation Layer",
-        "components": ["Next.js Frontend", "Mobile Web Views", "Admin Dashboard"],
+        "components": [
+          "Next.js Frontend",
+          "Mobile Web Views",
+          "Admin Dashboard"
+        ],
         "responsibility": "User interface, client-side logic, responsive design"
       },
       {
         "name": "API Gateway Layer",
-        "components": ["API Gateway", "Load Balancer", "Rate Limiter"],
+        "components": [
+          "API Gateway",
+          "Load Balancer",
+          "Rate Limiter"
+        ],
         "responsibility": "Request routing, authentication, rate limiting"
       },
       {
         "name": "Business Logic Layer",
-        "components": ["Bond Service", "Trading Service", "Analytics Service", "AI Service"],
+        "components": [
+          "Bond Service",
+          "Trading Service",
+          "Analytics Service",
+          "AI Service"
+        ],
         "responsibility": "Core business logic, data processing, calculations"
       },
       {
         "name": "Integration Layer",
-        "components": ["Broker Integration", "Payment Gateway", "Market Data Aggregator"],
+        "components": [
+          "Broker Integration",
+          "Payment Gateway",
+          "Market Data Aggregator"
+        ],
         "responsibility": "External API integration, data synchronization"
       },
       {
         "name": "Data Layer",
-        "components": ["MongoDB", "Redis Cache", "File Storage"],
+        "components": [
+          "MongoDB",
+          "Redis Cache",
+          "File Storage"
+        ],
         "responsibility": "Data persistence, caching, document storage"
       },
       {
         "name": "Blockchain Layer",
-        "components": ["Smart Contracts", "Token Management", "Transaction Handler"],
+        "components": [
+          "Smart Contracts",
+          "Token Management",
+          "Transaction Handler"
+        ],
         "responsibility": "Bond tokenization, blockchain transactions"
       }
     ]
@@ -270,7 +300,11 @@
           "created_at": "Date - Account creation",
           "updated_at": "Date - Last update"
         },
-        "indexes": ["email", "wallet_address", "subscription_tier"]
+        "indexes": [
+          "email",
+          "wallet_address",
+          "subscription_tier"
+        ]
       },
       "bonds": {
         "description": "Infrastructure bond listings",
@@ -297,7 +331,12 @@
           "created_at": "Date",
           "updated_at": "Date"
         },
-        "indexes": ["bond_id", "issuer", "status", "risk_category"]
+        "indexes": [
+          "bond_id",
+          "issuer",
+          "status",
+          "risk_category"
+        ]
       },
       "transactions": {
         "description": "All trading transactions",
@@ -319,7 +358,13 @@
           "settlement_date": "Date - Settlement date",
           "metadata": "Object - Additional transaction data"
         },
-        "indexes": ["transaction_id", "user_id", "bond_id", "timestamp", "payment_status"]
+        "indexes": [
+          "transaction_id",
+          "user_id",
+          "bond_id",
+          "timestamp",
+          "payment_status"
+        ]
       },
       "portfolios": {
         "description": "User portfolio holdings",
@@ -333,7 +378,9 @@
           "return_percentage": "Number - ROI percentage",
           "updated_at": "Date - Last calculation"
         },
-        "indexes": ["user_id"]
+        "indexes": [
+          "user_id"
+        ]
       },
       "subscriptions": {
         "description": "Subscription plan details and history",
@@ -350,7 +397,11 @@
           "status": "String - active|expired|cancelled",
           "features": "Array - List of enabled features"
         },
-        "indexes": ["user_id", "status", "end_date"]
+        "indexes": [
+          "user_id",
+          "status",
+          "end_date"
+        ]
       },
       "broker_accounts": {
         "description": "Linked broker account information",
@@ -366,7 +417,10 @@
           "last_sync": "Date - Last synchronization",
           "created_at": "Date"
         },
-        "indexes": ["user_id", "broker_name"]
+        "indexes": [
+          "user_id",
+          "broker_name"
+        ]
       },
       "analytics": {
         "description": "AI-generated analytics and predictions",
@@ -383,7 +437,10 @@
           "historical_accuracy": "Number - Past prediction accuracy",
           "valid_until": "Date - Prediction validity"
         },
-        "indexes": ["bond_id", "prediction_date"]
+        "indexes": [
+          "bond_id",
+          "prediction_date"
+        ]
       },
       "paper_trades": {
         "description": "Paper trading (practice) transactions",
@@ -398,7 +455,10 @@
           "timestamp": "Date - Trade timestamp",
           "pnl": "Number - Profit and Loss"
         },
-        "indexes": ["user_id", "timestamp"]
+        "indexes": [
+          "user_id",
+          "timestamp"
+        ]
       },
       "api_usage": {
         "description": "Custom API usage tracking",
@@ -413,7 +473,11 @@
           "response_time": "Number - Response time in ms",
           "status_code": "Number - HTTP status code"
         },
-        "indexes": ["user_id", "timestamp", "api_key"]
+        "indexes": [
+          "user_id",
+          "timestamp",
+          "api_key"
+        ]
       }
     }
   },
@@ -572,23 +636,56 @@
     "ai_ml_features": {
       "bond_recommendation_engine": {
         "algorithm": "Collaborative filtering + Content-based filtering",
-        "inputs": ["User profile", "Portfolio", "Risk appetite", "Investment goals"],
-        "outputs": ["Recommended bonds", "Confidence scores"]
+        "inputs": [
+          "User profile",
+          "Portfolio",
+          "Risk appetite",
+          "Investment goals"
+        ],
+        "outputs": [
+          "Recommended bonds",
+          "Confidence scores"
+        ]
       },
       "risk_assessment": {
         "algorithm": "Random Forest + Neural Networks",
-        "inputs": ["Historical data", "Market indicators", "Credit ratings", "Project details"],
-        "outputs": ["Risk score (0-100)", "Risk category", "Risk factors"]
+        "inputs": [
+          "Historical data",
+          "Market indicators",
+          "Credit ratings",
+          "Project details"
+        ],
+        "outputs": [
+          "Risk score (0-100)",
+          "Risk category",
+          "Risk factors"
+        ]
       },
       "return_prediction": {
         "algorithm": "LSTM + Time Series Analysis",
-        "inputs": ["Historical returns", "Market trends", "Economic indicators"],
-        "outputs": ["Expected returns", "Confidence intervals", "Time-based predictions"]
+        "inputs": [
+          "Historical returns",
+          "Market trends",
+          "Economic indicators"
+        ],
+        "outputs": [
+          "Expected returns",
+          "Confidence intervals",
+          "Time-based predictions"
+        ]
       },
       "sentiment_analysis": {
         "algorithm": "NLP + Transformer models",
-        "inputs": ["News articles", "Social media", "Financial reports"],
-        "outputs": ["Market sentiment", "Sentiment score", "Key topics"]
+        "inputs": [
+          "News articles",
+          "Social media",
+          "Financial reports"
+        ],
+        "outputs": [
+          "Market sentiment",
+          "Sentiment score",
+          "Key topics"
+        ]
       }
     }
   },
@@ -601,7 +698,12 @@
     },
     "authorization": {
       "rbac": "Role-Based Access Control",
-      "roles": ["user", "admin", "broker", "issuer"],
+      "roles": [
+        "user",
+        "admin",
+        "broker",
+        "issuer"
+      ],
       "permissions": "Granular permission system"
     },
     "data_protection": {
@@ -626,7 +728,7 @@
   "deployment": {
     "environments": {
       "development": {
-        "frontend": "http://localhost:3000",
+        "frontend": "http://localhost:5001",
         "backend": "http://localhost:3210",
         "database": "mongodb://localhost:27017/bond_platform_dev",
         "redis": "redis://localhost:6379"
@@ -647,7 +749,7 @@
     },
     "docker_configuration": {
       "containers": [
-        "frontend-app (Next.js on port 3000)",
+        "frontend-app (Next.js on port 5001)",
         "backend-api (Express on port 3210)",
         "mongodb (port 27017)",
         "redis (port 6379)",
@@ -734,7 +836,11 @@
       },
       "digilocker": {
         "purpose": "Document verification",
-        "supported_docs": ["PAN", "Aadhaar", "Driving License"]
+        "supported_docs": [
+          "PAN",
+          "Aadhaar",
+          "Driving License"
+        ]
       }
     },
     "notification_services": {
@@ -759,7 +865,10 @@
     },
     "load_testing": {
       "tool": "Apache JMeter / K6",
-      "scenarios": ["1000 concurrent users", "Peak trading hours"]
+      "scenarios": [
+        "1000 concurrent users",
+        "Peak trading hours"
+      ]
     },
     "security_testing": {
       "sast": "SonarQube",
@@ -897,33 +1006,56 @@
     "onboarding_flow": {
       "step_1": {
         "name": "Landing Page",
-        "actions": ["View value proposition", "See pricing", "Watch demo video"],
+        "actions": [
+          "View value proposition",
+          "See pricing",
+          "Watch demo video"
+        ],
         "cta": "Sign Up / Login"
       },
       "step_2": {
         "name": "Registration",
-        "actions": ["Email verification", "Create password", "Accept T&C"],
+        "actions": [
+          "Email verification",
+          "Create password",
+          "Accept T&C"
+        ],
         "duration": "2 minutes"
       },
       "step_3": {
         "name": "KYC Verification",
-        "actions": ["Upload Aadhaar", "Face verification", "DigiLocker integration"],
+        "actions": [
+          "Upload Aadhaar",
+          "Face verification",
+          "DigiLocker integration"
+        ],
         "duration": "5 minutes",
         "approval_time": "< 24 hours"
       },
       "step_4": {
         "name": "Profile Setup",
-        "actions": ["Risk assessment quiz", "Investment goals", "Link bank/wallet"],
+        "actions": [
+          "Risk assessment quiz",
+          "Investment goals",
+          "Link bank/wallet"
+        ],
         "duration": "3 minutes"
       },
       "step_5": {
         "name": "Wallet Connection",
-        "actions": ["Connect MetaMask/WalletConnect", "Verify blockchain address"],
+        "actions": [
+          "Connect MetaMask/WalletConnect",
+          "Verify blockchain address"
+        ],
         "duration": "2 minutes"
       },
       "step_6": {
         "name": "Tutorial",
-        "actions": ["Interactive platform tour", "First paper trade", "Feature highlights"],
+        "actions": [
+          "Interactive platform tour",
+          "First paper trade",
+          "Feature highlights"
+        ],
         "duration": "5 minutes"
       }
     },
@@ -1250,12 +1382,20 @@
       },
       "alerts": {
         "critical": {
-          "triggers": ["Error rate > 5%", "API latency > 1s", "Payment failures > 10/min"],
+          "triggers": [
+            "Error rate > 5%",
+            "API latency > 1s",
+            "Payment failures > 10/min"
+          ],
           "channels": "PagerDuty → SMS + Call",
           "response_time": "< 5 minutes"
         },
         "warning": {
-          "triggers": ["Error rate > 2%", "API latency > 500ms", "Disk usage > 80%"],
+          "triggers": [
+            "Error rate > 2%",
+            "API latency > 500ms",
+            "Disk usage > 80%"
+          ],
           "channels": "Slack + Email",
           "response_time": "< 30 minutes"
         }
@@ -1452,9 +1592,23 @@
   },
   "internationalization": {
     "supported_languages": {
-      "phase_1": ["English (en)", "Hindi (hi)"],
-      "phase_2": ["Tamil (ta)", "Telugu (te)", "Bengali (bn)", "Marathi (mr)", "Gujarati (gu)"],
-      "phase_3": ["Kannada (kn)", "Malayalam (ml)", "Punjabi (pa)", "Urdu (ur)"]
+      "phase_1": [
+        "English (en)",
+        "Hindi (hi)"
+      ],
+      "phase_2": [
+        "Tamil (ta)",
+        "Telugu (te)",
+        "Bengali (bn)",
+        "Marathi (mr)",
+        "Gujarati (gu)"
+      ],
+      "phase_3": [
+        "Kannada (kn)",
+        "Malayalam (ml)",
+        "Punjabi (pa)",
+        "Urdu (ur)"
+      ]
     },
     "implementation": {
       "library": "next-i18next / react-i18next",
@@ -1994,20 +2148,45 @@
       ],
       "competitors": {
         "zerodha_coin": {
-          "strengths": ["Brand recognition", "Large user base", "Low fees"],
-          "weaknesses": ["No bond tokenization", "Limited AI features", "No blockchain"],
+          "strengths": [
+            "Brand recognition",
+            "Large user base",
+            "Low fees"
+          ],
+          "weaknesses": [
+            "No bond tokenization",
+            "Limited AI features",
+            "No blockchain"
+          ],
           "market_share": "35%",
           "our_advantage": "Blockchain tokenization, AI recommendations, infrastructure focus"
         },
         "groww": {
-          "strengths": ["User-friendly interface", "Education content", "Quick onboarding"],
-          "weaknesses": ["Generic platform", "No infrastructure bonds", "Basic analytics"],
+          "strengths": [
+            "User-friendly interface",
+            "Education content",
+            "Quick onboarding"
+          ],
+          "weaknesses": [
+            "Generic platform",
+            "No infrastructure bonds",
+            "Basic analytics"
+          ],
           "market_share": "25%",
           "our_advantage": "Specialized infrastructure bonds, advanced AI analytics"
         },
         "traditional_bond_platforms": {
-          "strengths": ["Established trust", "Regulatory compliance", "Large bond inventory"],
-          "weaknesses": ["Outdated UI", "No AI", "High minimum investment", "Slow settlement"],
+          "strengths": [
+            "Established trust",
+            "Regulatory compliance",
+            "Large bond inventory"
+          ],
+          "weaknesses": [
+            "Outdated UI",
+            "No AI",
+            "High minimum investment",
+            "Slow settlement"
+          ],
           "market_share": "30%",
           "our_advantage": "Modern UX, AI-driven, low minimums, instant blockchain settlement"
         }
