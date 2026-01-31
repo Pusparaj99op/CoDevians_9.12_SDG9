@@ -8,25 +8,38 @@
     "phase_1_basic": {
       "description": "Get it working first",
       "iterations": "0-4",
-      "technologies": ["Next.js", "Tailwind CSS"],
+      "technologies": [
+        "Next.js",
+        "Tailwind CSS"
+      ],
       "no_extras": "No animations, no fancy UI libraries yet"
     },
     "phase_2_functional": {
       "description": "Add core features",
       "iterations": "5-10",
-      "additions": ["React Context", "Form validation"],
+      "additions": [
+        "React Context",
+        "Form validation"
+      ],
       "still_simple": "Keep UI simple, focus on functionality"
     },
     "phase_3_polish": {
       "description": "Make it look good",
       "iterations": "11-15",
-      "additions": ["Recharts", "Better UI components"],
+      "additions": [
+        "Recharts",
+        "Better UI components"
+      ],
       "focus": "User experience improvements"
     },
     "phase_4_advanced": {
       "description": "Add impressive features",
       "iterations": "16-20",
-      "additions": ["Socket.io", "Framer Motion", "GSAP"],
+      "additions": [
+        "Socket.io",
+        "Framer Motion",
+        "GSAP"
+      ],
       "optional": "Only if time permits"
     }
   },
@@ -261,17 +274,41 @@
     }
   },
   "pages_by_iteration": {
-    "iteration_0": ["/ (Hello World)"],
-    "iteration_1": ["/ (Bond grid)"],
-    "iteration_4": ["/bonds/[id]"],
-    "iteration_5": ["/login", "/register"],
-    "iteration_7": ["/dashboard"],
-    "iteration_9": ["/dashboard/portfolio"],
-    "iteration_14": ["/dashboard/transactions"],
-    "iteration_15": ["/ (Landing page)", "/bonds (New)"],
-    "iteration_17": ["/dashboard/profile"],
-    "iteration_18": ["/pricing"],
-    "iteration_20": ["/leaderboard"]
+    "iteration_0": [
+      "/ (Hello World)"
+    ],
+    "iteration_1": [
+      "/ (Bond grid)"
+    ],
+    "iteration_4": [
+      "/bonds/[id]"
+    ],
+    "iteration_5": [
+      "/login",
+      "/register"
+    ],
+    "iteration_7": [
+      "/dashboard"
+    ],
+    "iteration_9": [
+      "/dashboard/portfolio"
+    ],
+    "iteration_14": [
+      "/dashboard/transactions"
+    ],
+    "iteration_15": [
+      "/ (Landing page)",
+      "/bonds (New)"
+    ],
+    "iteration_17": [
+      "/dashboard/profile"
+    ],
+    "iteration_18": [
+      "/pricing"
+    ],
+    "iteration_20": [
+      "/leaderboard"
+    ]
   },
   "technical_decisions": {
     "app_router": "Use Next.js 14 App Router from start",
@@ -282,7 +319,7 @@
   "quick_start_commands": {
     "create_project": "npx create-next-app@latest frontend --typescript --tailwind --app",
     "run_dev": "cd frontend && npm run dev",
-    "port": 3000
+    "port": 5001
   },
   "files_count_progression": {
     "iteration_0": 3,

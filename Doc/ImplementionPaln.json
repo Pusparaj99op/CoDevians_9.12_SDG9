@@ -27,15 +27,23 @@
       "duration": "2-3 hours",
       "output": "Two servers running, frontend can call backend API",
       "features": [
-        "Next.js frontend running on port 3000",
+        "Next.js frontend running on port 5001",
         "Express backend running on port 3210",
         "Single API endpoint: GET /api/health",
         "Frontend displays 'Connected to Backend' message",
         "Basic folder structure created"
       ],
       "files_to_create": {
-        "frontend": ["package.json", "app/page.tsx", "app/layout.tsx"],
-        "backend": ["package.json", "src/server.js", "src/routes/health.js"]
+        "frontend": [
+          "package.json",
+          "app/page.tsx",
+          "app/layout.tsx"
+        ],
+        "backend": [
+          "package.json",
+          "src/server.js",
+          "src/routes/health.js"
+        ]
       },
       "success_criteria": [
         "npm run dev starts both servers",
@@ -474,19 +482,34 @@
       "note": "Keep it simple, no extra libraries"
     },
     "iterations_5_10": {
-      "add": ["bcryptjs", "jsonwebtoken", "mongoose"],
+      "add": [
+        "bcryptjs",
+        "jsonwebtoken",
+        "mongoose"
+      ],
       "frontend_add": "React Context for auth state"
     },
     "iterations_11_15": {
-      "add": ["Recharts", "Framer Motion"],
+      "add": [
+        "Recharts",
+        "Framer Motion"
+      ],
       "note": "Add libraries as needed"
     },
     "iterations_16_20": {
-      "add": ["Socket.io", "Socket.io-client"],
+      "add": [
+        "Socket.io",
+        "Socket.io-client"
+      ],
       "note": "Advanced features"
     },
     "post_hackathon": {
-      "add": ["Redis", "Docker", "TypeScript migration", "Testing frameworks"]
+      "add": [
+        "Redis",
+        "Docker",
+        "TypeScript migration",
+        "Testing frameworks"
+      ]
     }
   },
   "checkpoint_testing": {

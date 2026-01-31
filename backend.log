@@ -1,0 +1,9 @@
+
+> mudra-backend@1.0.0 dev
+> node --watch src/server.js
+
+[dotenv@17.2.3] injecting env (5) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+🚀 Mudra Backend running on http://localhost:3210
+📍 Health check: http://localhost:3210/api/health
+📍 Bonds API: http://localhost:3210/api/bonds
+📦 MongoDB Connected: localhost

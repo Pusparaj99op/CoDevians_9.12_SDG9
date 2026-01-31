@@ -7,7 +7,7 @@ const User = require('../models/User');
 router.get('/', async (req, res) => {
   try {
     const { limit = 50, page = 1 } = req.query;
-    
+
     const limitNum = parseInt(limit);
     const pageNum = parseInt(page);
     const skip = (pageNum - 1) * limitNum;
@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 
         // Calculate returns
         const totalReturns = currentValue - totalInvested;
-        const percentageReturn = totalInvested > 0 
+        const percentageReturn = totalInvested > 0
           ? ((totalReturns / totalInvested) * 100)
           : 0;
 
