@@ -12,24 +12,33 @@
     },
     "iteration_6_10": {
       "testing": "Basic API testing",
-      "tools": ["Postman Collection", "Manual UI testing"],
+      "tools": [
+        "Postman Collection",
+        "Manual UI testing"
+      ],
       "focus": "Auth flow, trading logic"
     },
     "iteration_11_15": {
       "testing": "Consider automated tests",
-      "tools": ["Jest (optional)", "Postman automated"],
+      "tools": [
+        "Jest (optional)",
+        "Postman automated"
+      ],
       "focus": "Critical paths only"
     },
     "iteration_16_20": {
       "testing": "Add if time permits",
-      "tools": ["Jest", "React Testing Library"],
+      "tools": [
+        "Jest",
+        "React Testing Library"
+      ],
       "focus": "Regression prevention"
     }
   },
   "deployment_strategy": {
     "iteration_0_10": {
       "deployment": "Local development only",
-      "frontend": "localhost:3000",
+      "frontend": "localhost:5001",
       "backend": "localhost:3210",
       "database": "localhost:27017"
     },
@@ -86,26 +95,46 @@
     },
     "iteration_16_20": {
       "focus": "Demo documentation",
-      "includes": ["Setup guide", "Features list", "Screenshots"]
+      "includes": [
+        "Setup guide",
+        "Features list",
+        "Screenshots"
+      ]
     }
   },
   "team_workflow": {
     "team_members": {
       "pranay": {
         "role": "Team Lead / Full Stack",
-        "focus": ["Architecture", "Integration", "Debugging"]
+        "focus": [
+          "Architecture",
+          "Integration",
+          "Debugging"
+        ]
       },
       "abhijit": {
         "role": "Backend Developer",
-        "focus": ["API development", "Database", "Business logic"]
+        "focus": [
+          "API development",
+          "Database",
+          "Business logic"
+        ]
       },
       "samiksh": {
         "role": "Frontend Developer",
-        "focus": ["UI components", "Pages", "Styling"]
+        "focus": [
+          "UI components",
+          "Pages",
+          "Styling"
+        ]
       },
       "vineet": {
         "role": "Documentation & Support",
-        "focus": ["Docs", "Testing", "Presentation"]
+        "focus": [
+          "Docs",
+          "Testing",
+          "Presentation"
+        ]
       }
     },
     "parallel_work": {
