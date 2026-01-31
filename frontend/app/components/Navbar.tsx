@@ -8,10 +8,12 @@ import { prefersReducedMotion, isMobile } from '@/lib/animations';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user, isAuthenticated, logout, isLoading } = useAuth();
   const navRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   const formatBalance = (balance: number) => {
     return new Intl.NumberFormat('en-IN', {
@@ -60,6 +62,22 @@ export default function Navbar() {
       }
     }
   }, [isMobileMenuOpen]);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    if (userMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [userMenuOpen]);
 
   return (
     <nav
@@ -139,15 +157,95 @@ export default function Navbar() {
                     {formatBalance(user?.wallet?.balance || 0)}
                   </span>
                 </div>
-                {/* User Menu */}
-                <div className="flex items-center gap-3">
-                  <span className="text-gray-300 text-sm">{user?.name}</span>
+                {/* User Menu Dropdown */}
+                <div className="relative" ref={userMenuRef}>
                   <button
-                    onClick={logout}
-                    className="px-4 py-2 glass-strong hover:bg-red-500/30 text-red-300 rounded-lg text-sm font-medium transition-all border border-red-500/30 hover:border-red-500/50 hover:scale-105"
+                    onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    className="flex items-center gap-2 px-3 py-2 glass-strong border border-white/20 hover:border-white/40 rounded-lg transition-all group"
                   >
-                    Logout
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white font-bold">
+                      {user?.name?.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="text-gray-300 text-sm max-w-24 truncate">{user?.name}</span>
+                    <svg
+                      className={`w-4 h-4 text-gray-400 transition-transform ${
+                        userMenuOpen ? 'rotate-180' : ''
+                      }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
                   </button>
+
+                  {/* Dropdown Menu */}
+                  {userMenuOpen && (
+                    <div className="absolute right-0 mt-2 w-64 glass-strong border border-white/20 rounded-lg shadow-xl overflow-hidden z-50">
+                      {/* User Info */}
+                      <div className="p-4 border-b border-white/10">
+                        <div className="flex items-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white font-bold text-lg">
+                            {user?.name?.charAt(0).toUpperCase()}
+                          </div>
+                          <div>
+                            <div className="text-white font-medium">{user?.name}</div>
+                            <div className="text-gray-400 text-sm">{user?.email}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Menu Items */}
+                      <div className="p-2">
+                        <Link
+                          href="/dashboard"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          <span>📊</span>
+                          <span>Dashboard</span>
+                        </Link>
+                        <Link
+                          href="/portfolio"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          <span>📈</span>
+                          <span>Portfolio</span>
+                        </Link>
+                        <Link
+                          href="/dashboard/transactions"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          <span>📋</span>
+                          <span>Transactions</span>
+                        </Link>
+                        <Link
+                          href="/dashboard/profile"
+                          className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                          onClick={() => setUserMenuOpen(false)}
+                        >
+                          <span>⚙️</span>
+                          <span>Profile & Settings</span>
+                        </Link>
+                      </div>
+
+                      {/* Logout */}
+                      <div className="p-2 border-t border-white/10">
+                        <button
+                          onClick={() => {
+                            logout();
+                            setUserMenuOpen(false);
+                          }}
+                          className="w-full flex items-center gap-3 px-3 py-2 text-red-300 hover:text-red-200 hover:bg-red-500/20 rounded-lg transition-all"
+                        >
+                          <span>🚪</span>
+                          <span>Logout</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             ) : (
